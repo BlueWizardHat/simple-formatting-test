@@ -22,10 +22,10 @@ public class WordReader {
 				break;
 			}
 
-			String[] lineWords = line.split("\\s+|\\n");
+			String[] lineWords = line.split("(\\s|\\n)+");
 			words.accept(lineWords);
 		}
 
-		return words.build().flatMap(Arrays::stream);
+		return words.build().flatMap(Arrays::stream).filter(word -> word != null && !"".equals(word));
 	}
 }

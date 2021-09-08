@@ -3,7 +3,7 @@ package net.bluewizardhat.simpleformattingtest;
 import java.util.stream.Stream;
 
 /**
- * Formats words into lines.
+ * Formats words into lines while respecting the desired width and using the given formatter.
  */
 public class LineFormatter {
 	private SingleLineFormatter formatter;
