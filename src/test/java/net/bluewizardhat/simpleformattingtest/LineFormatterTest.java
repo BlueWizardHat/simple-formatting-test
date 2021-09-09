@@ -85,4 +85,30 @@ public class LineFormatterTest {
 		String expected = "This text should be \n   center aligned   ";
 		assertEquals(expected, lines.collect(Collectors.joining("\n")));
 	}
+
+	@Test
+	public void testPerfectFit() {
+		// Setup
+		Stream<String> words = Stream.of("4444", "55555");
+
+		// Execute
+		Stream<String> lines = LineFormatter.convertWordsToLines(SingleLineFormatter.getFormatter("left"), 10, words);
+
+		// Verify
+		String expected = "4444 55555";
+		assertEquals(expected, lines.collect(Collectors.joining("\n")));
+	}
+
+	@Test
+	public void testOneMoreThanPerfectFit() {
+		// Setup
+		Stream<String> words = Stream.of("55555", "55555");
+
+		// Execute
+		Stream<String> lines = LineFormatter.convertWordsToLines(SingleLineFormatter.getFormatter("left"), 10, words);
+
+		// Verify
+		String expected = "55555     \n55555     ";
+		assertEquals(expected, lines.collect(Collectors.joining("\n")));
+	}
 }

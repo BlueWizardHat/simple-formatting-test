@@ -19,7 +19,7 @@ public class LineFormatter {
 	private void accept(String word) {
 		if (builder.length() == 0) {
 			builder.append(word);
-		} else if (builder.length() + word.length() + 1 < width) {
+		} else if (builder.length() + word.length() + 1 <= width) {
 			builder.append(" ");
 			builder.append(word);
 		} else {
